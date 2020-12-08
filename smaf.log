@@ -1,0 +1,1990 @@
+2020-11-26T03:21:05.868Z	INFO	syslog:
+  address: 172.30.255.1:6000
+  num_handlers: 32
+  queue_size: 2048
+  handler: ami
+gtpc:
+  address: 172.30.255.1:6001
+  num_handlers: 32
+  queue_size: 2048
+  handler: gtp
+files:
+  dir: /home/monisha/SAM/SMAF_REL/data
+  duration: 10m
+  purge:
+    interval: 12h
+    ret_period: 840h0m0s
+    disk_threshold: 80
+logging:
+  level: debug
+  console: true
+  file: /home/monisha/SMAF/SMAF_REL/logs/smaf.log
+  file_size: 10mb
+  encoder: development
+telemetry:
+  port: "9000"
+  refresh_interval: 2m
+ager:
+  enable: true
+  session_timeout: 60m
+  gtpu_inactive_timeout: 10m
+  gtpu_expiry_timeout: 1m
+smafreport:
+  format: json
+  duration: 3m
+  local_file_dir: /home/monisha/SMAF/SMAF_REL/report/
+  purge_files: false
+  local_purge_dir: /home/monisha/SMAF/SMAF_REL/purge/
+  zip_purge_file: false
+sftp:
+  server: 10.115.72.22
+  port: 22
+  username: gigatest
+  passwd: gigatest
+  remote_file_dir: /mnt/automation/datastore/pcap/sam/smaf_reports/nov25_monisha/
+  zip_remote_file: false
+property:
+  apn: ""
+  dnn: ""
+  imsi: ""
+  supi: ""
+  imei: ""
+  pei: ""
+  msisdn: ""
+  gpsi: ""
+  rat: ""
+  qci: ""
+  nr5qi: ""
+  ecgi: ""
+  eci: ""
+  eplmnID: ""
+  ncgi: ""
+  nci: ""
+  nplmnID: ""
+  tai: ""
+  ulteid: ""
+  dlteid: ""
+  inneripsrc: ""
+  inneripdst: ""
+  protocol: ""
+  nwsliceID: ""
+  interface: ""
+  starttime: ""
+  endtime: ""
+  appname: ""
+persistence:
+  enable: false
+  ip: 127.0.0.1
+  port: 6379
+  passwd: ""
+
+2020-11-26T03:21:05.870Z	INFO	telemetry	bootstrap
+2020-11-26T03:21:05.870Z	INFO	telemetry	update resource:protocols
+2020-11-26T03:21:05.870Z	INFO	telemetry	update resource:memory
+2020-11-26T03:21:05.871Z	INFO	telemetry	update resource:filesystem
+2020-11-26T03:21:05.871Z	INFO	telemetry	update resource:cpu
+2020-11-26T03:21:05.899Z	INFO	telemetry	update resource:sensor
+2020-11-26T03:21:05.900Z	INFO	telemetry	update resource:sensor_status
+2020-11-26T03:21:05.910Z	INFO	jobmgr	start
+2020-11-26T03:21:05.910Z	INFO	jobmgr.cron	start
+2020-11-26T03:21:05.911Z	INFO	jobmgr.cron	schedule	{"now": "2020-11-26T03:21:05.911Z", "entry": 1, "next": "2020-11-26T12:00:00.000Z", "name": "purging"}
+2020-11-26T03:21:05.911Z	INFO	jobmgr.cron	schedule	{"now": "2020-11-26T03:21:05.911Z", "entry": 2, "next": "2020-11-26T03:30:00.000Z", "name": "rotator"}
+2020-11-26T03:21:05.911Z	INFO	jobmgr.cron	schedule	{"now": "2020-11-26T03:21:05.911Z", "entry": 3, "next": "2020-11-26T03:22:00.000Z", "name": "telemetry"}
+2020-11-26T03:21:05.911Z	INFO	telemetry	server start - localhost:9000
+2020-11-26T03:21:05.911Z	INFO	jobmgr.cron	schedule	{"now": "2020-11-26T03:21:05.911Z", "entry": 4, "next": "2020-11-26T03:24:00.000Z", "name": "smafreporter"}
+2020-11-26T03:21:05.911Z	INFO	syslog	start
+2020-11-26T03:21:05.912Z	INFO	GtpCjson	start : GTPC
+2020-11-26T03:21:14.146Z	INFO	GtpCjson	GTPJSON_PKTS_IN_Count : 1
+2020-11-26T03:21:14.146Z	DEBUG	GTPJSON	RCVD JSON => %s{
+  "version": "1.0.0",
+  "SubscriberActivitySummary": {
+    "NumSubscribers": 1,
+    "SubscribersList": [
+      {
+        "SubscriberId": {
+          "IMSI": "505024101215074",
+          "MSISDN": "17962480141"
+        },
+        "InterfaceList": [
+          {
+            "IfName": "S5",
+            "PDNSessionList": [
+              {
+                "UserControlTunnel": {
+                  "GTPCTunnel": {
+                    "AccessGTPCTunnelInfo": {
+                      "IPAddr": {
+                        "IPv6": "fdc0:0:0:410::20"
+                      },
+                      "TEID": "0x4c4b40"
+                    },
+                    "CoreGTPCTunnelInfo": {
+                      "IPAddr": {
+                        "IPv6": "fdc0:0:0:310::100"
+                      },
+                      "TEID": "0xf4240"
+                    }
+                  }
+                },
+                "UserDataTunnel": {
+                  "BearerInfo": {
+                    "NumBearers": 1,
+                    "BearerList": [
+                      {
+                        "EventActivityList": [
+                          {
+                            "Name": "CRT_SES",
+                            "StartTime": 1606360916,
+                            "EndTime": 1606360916,
+                            "CauseCode": 16,
+                            "Params": {
+                              "AccessInfo": {
+                                "APN": "ssenoauth146",
+                                "UEAddress": {
+                                  "AddrType": "IPv6",
+                                  "Addr": {
+                                    "IPv6": "2001::1:1"
+                                  }
+                                }
+                              },
+                              "QosInfoList": [
+                                {
+                                  "QCI": 6
+                                }
+                              ],
+                              "LocationInfoList": [
+                                {
+                                  "TAI": {
+                                    "PLMNID": {
+                                      "MCC": "310",
+                                      "MNC": "123"
+                                    },
+                                    "TAC": "0x1edb"
+                                  },
+                                  "ECGI": {
+                                    "PLMNID": {
+                                      "MCC": "310",
+                                      "MNC": "123"
+                                    },
+                                    "ECI": "432462"
+                                  }
+                                }
+                              ],
+                              "RATType": "EUTRAN",
+                              "GTPUTunnelInfo": {
+                                "DownLinkTunnelRecord": {
+                                  "TunnelInfo": {
+                                    "IPAddr": {
+                                      "IPv6": "fdc0:0:0:410::30"
+                                    },
+                                    "TEID": "0x5b8d80"
+                                  }
+                                },
+                                "UpLinkTunnelRecord": {
+                                  "TunnelInfo": {
+                                    "IPAddr": {
+                                      "IPv6": "fdc0:0:0:310::100"
+                                    },
+                                    "TEID": "0x1e8480"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "EBI": 5,
+                        "AccessInfo": {
+                          "APN": "ssenoauth146",
+                          "UEAddress": {
+                            "AddrType": "IPv6",
+                            "Addr": {
+                              "IPv6": "2001::1:1"
+                            }
+                          }
+                        },
+                        "GTPUTunnelList": [
+                          {
+                            "GTPUTunnelInfo": {
+                              "DownLinkTunnelRecord": {
+                                "TunnelInfo": {
+                                  "IPAddr": {
+                                    "IPv6": "fdc0:0:0:410::30"
+                                  },
+                                  "TEID": "0x5b8d80"
+                                }
+                              },
+                              "UpLinkTunnelRecord": {
+                                "TunnelInfo": {
+                                  "IPAddr": {
+                                    "IPv6": "fdc0:0:0:310::100"
+                                  },
+                                  "TEID": "0x1e8480"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "EventsSummaryReportRecord": {
+          "NumActivity": 1,
+          "SuccessfulEvents": 1
+        }
+      }
+    ]
+  }
+}
+2020-11-26T03:21:14.148Z	INFO	GTPJSON	GtpcJSON_STATS_EVT_CRT_SES :1
+2020-11-26T03:21:14.149Z	INFO	correlation	ADD Event Map SubId:505024101215074
+2020-11-26T03:21:14.149Z	INFO	correlation	SET Access Flag SubId(IMSI):505024101215074 INTF:0 Pdn:0 Ber:0 Tun:-1 Flag:1
+2020-11-26T03:21:14.149Z	INFO	correlation	Bearer SessionId: S5_fdc0:0000:0000:0310:0000:0000:0000:0100_0x1e8480_fdc0:0000:0000:0410:0000:0000:0000:0030_0x5b8d80
+2020-11-26T03:21:14.149Z	DEBUG	correlation	GTPU Tunnel Create UpDownLink
+2020-11-26T03:21:14.149Z	INFO	correlation	GTPUUpLink Tunnel Link set
+2020-11-26T03:21:14.149Z	INFO	correlation	GTPUDownLink Tunnel Link set
+2020-11-26T03:21:14.149Z	INFO	correlation	Num Events:1
+2020-11-26T03:21:14.149Z	INFO	correlation	Added Interface, PDN, Bearer and Event
+2020-11-26T03:21:14.149Z	INFO	GTPJSON	GtpcJSON_STATS_SUCC_CRT_SES_EVT :1
+2020-11-26T03:21:14.149Z	INFO	GtpCjson	GTPJSON_PARSE_ERROR_COUNT : <nil>
+2020-11-26T03:21:14.179Z	INFO	GtpCjson	GTPJSON_PKTS_IN_Count : 2
+2020-11-26T03:21:14.179Z	DEBUG	GTPJSON	RCVD JSON => %s{
+  "version": "1.0.0",
+  "SubscriberActivitySummary": {
+    "NumSubscribers": 1,
+    "SubscribersList": [
+      {
+        "SubscriberId": {
+          "IMSI": "505024101215074",
+          "IMEI": "5050241012150700",
+          "MSISDN": "17962480141"
+        },
+        "InterfaceList": [
+          {
+            "IfName": "S11",
+            "PDNSessionList": [
+              {
+                "UserControlTunnel": {
+                  "GTPCTunnel": {
+                    "AccessGTPCTunnelInfo": {
+                      "IPAddr": {
+                        "IPv6": "fdc0:0:0:310::40"
+                      },
+                      "TEID": "0xf4240"
+                    },
+                    "CoreGTPCTunnelInfo": {
+                      "IPAddr": {
+                        "IPv6": "fdc0:0:0:410::20"
+                      },
+                      "TEID": "0x2dc6c0"
+                    }
+                  }
+                },
+                "UserDataTunnel": {
+                  "BearerInfo": {
+                    "NumBearers": 1,
+                    "BearerList": [
+                      {
+                        "EventActivityList": [
+                          {
+                            "Name": "CRT_SES",
+                            "StartTime": 1606360916,
+                            "EndTime": 1606360916,
+                            "CauseCode": 16,
+                            "Params": {
+                              "AccessInfo": {
+                                "APN": "ssenoauth146",
+                                "UEAddress": {
+                                  "AddrType": "IPv6",
+                                  "Addr": {
+                                    "IPv6": "2001::1:1"
+                                  }
+                                }
+                              },
+                              "QosInfoList": [
+                                {
+                                  "QCI": 6
+                                }
+                              ],
+                              "LocationInfoList": [
+                                {
+                                  "TAI": {
+                                    "PLMNID": {
+                                      "MCC": "310",
+                                      "MNC": "123"
+                                    },
+                                    "TAC": "0xe671"
+                                  },
+                                  "ECGI": {
+                                    "PLMNID": {
+                                      "MCC": "310",
+                                      "MNC": "123"
+                                    },
+                                    "ECI": "432462"
+                                  }
+                                }
+                              ],
+                              "RATType": "EUTRAN",
+                              "GTPUTunnelInfo": {
+                                "DownLinkTunnelRecord": {
+                                  "TunnelInfo": {
+                                    "IPAddr": {},
+                                    "TEID": ""
+                                  }
+                                },
+                                "UpLinkTunnelRecord": {
+                                  "TunnelInfo": {
+                                    "IPAddr": {
+                                      "IPv6": "fdc0:0:0:410::30"
+                                    },
+                                    "TEID": "0x3d0900"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "EBI": 5,
+                        "AccessInfo": {
+                          "APN": "ssenoauth146",
+                          "UEAddress": {
+                            "AddrType": "IPv6",
+                            "Addr": {
+                              "IPv6": "2001::1:1"
+                            }
+                          }
+                        },
+                        "GTPUTunnelList": [
+                          {
+                            "GTPUTunnelInfo": {
+                              "DownLinkTunnelRecord": {
+                                "TunnelInfo": {
+                                  "IPAddr": {},
+                                  "TEID": ""
+                                }
+                              },
+                              "UpLinkTunnelRecord": {
+                                "TunnelInfo": {
+                                  "IPAddr": {
+                                    "IPv6": "fdc0:0:0:410::30"
+                                  },
+                                  "TEID": "0x3d0900"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "EventsSummaryReportRecord": {
+          "NumActivity": 1,
+          "SuccessfulEvents": 1
+        }
+      }
+    ]
+  }
+}
+2020-11-26T03:21:14.180Z	WARN	correlation	GTPTunnelRecord IPv4 and IPv6 empty
+2020-11-26T03:21:14.180Z	WARN	correlation	GTPTunnelRecord IPAddr is not valid
+2020-11-26T03:21:14.180Z	INFO	correlation	Setting DownLinkTunnelRecord to null
+2020-11-26T03:21:14.181Z	INFO	GTPJSON	GtpcJSON_STATS_EVT_CRT_SES :2
+2020-11-26T03:21:14.181Z	INFO	correlation	FOUND Event Map SubId:505024101215074
+2020-11-26T03:21:14.181Z	INFO	correlation	UPD IMEI:5050241012150700
+2020-11-26T03:21:14.181Z	INFO	correlation	SET Access Flag SubId(IMSI):505024101215074 INTF:1 Pdn:0 Ber:0 Tun:-1 Flag:1
+2020-11-26T03:21:14.181Z	DEBUG	correlation	GTPU Tunnel Create UpLink
+2020-11-26T03:21:14.181Z	INFO	correlation	GTPUUpLink Tunnel Link set
+2020-11-26T03:21:14.181Z	INFO	correlation	Num Events:2
+2020-11-26T03:21:14.181Z	INFO	correlation	Added Interface, PDN, Bearer and Event
+2020-11-26T03:21:14.181Z	INFO	GTPJSON	GtpcJSON_STATS_SUCC_CRT_SES_EVT :2
+2020-11-26T03:21:14.181Z	INFO	GtpCjson	GTPJSON_PARSE_ERROR_COUNT : <nil>
+2020-11-26T03:21:14.214Z	INFO	GtpCjson	GTPJSON_PKTS_IN_Count : 3
+2020-11-26T03:21:14.214Z	DEBUG	GTPJSON	RCVD JSON => %s{
+  "version": "1.0.0",
+  "SubscriberActivitySummary": {
+    "NumSubscribers": 1,
+    "SubscribersList": [
+      {
+        "SubscriberId": {
+          "IMSI": "505024101215074",
+          "IMEI": "5050241012150700",
+          "MSISDN": "17962480141"
+        },
+        "InterfaceList": [
+          {
+            "IfName": "S11",
+            "PDNSessionList": [
+              {
+                "UserControlTunnel": {
+                  "GTPCTunnel": {
+                    "AccessGTPCTunnelInfo": {
+                      "IPAddr": {
+                        "IPv6": "fdc0:0:0:310::40"
+                      },
+                      "TEID": "0xf4240"
+                    },
+                    "CoreGTPCTunnelInfo": {
+                      "IPAddr": {
+                        "IPv6": "fdc0:0:0:410::20"
+                      },
+                      "TEID": "0x2dc6c0"
+                    }
+                  }
+                },
+                "UserDataTunnel": {
+                  "BearerInfo": {
+                    "NumBearers": 1,
+                    "BearerList": [
+                      {
+                        "EventActivityList": [
+                          {
+                            "Name": "MOD_BEA",
+                            "StartTime": 1606360916,
+                            "EndTime": 1606360916,
+                            "CauseCode": 16,
+                            "Params": {
+                              "AccessInfo": {
+                                "APN": "ssenoauth146",
+                                "UEAddress": {
+                                  "AddrType": "IPv6",
+                                  "Addr": {
+                                    "IPv6": "2001::1:1"
+                                  }
+                                }
+                              },
+                              "QosInfoList": [
+                                {
+                                  "QCI": 6
+                                }
+                              ],
+                              "LocationInfoList": [
+                                {
+                                  "TAI": {
+                                    "PLMNID": {
+                                      "MCC": "310",
+                                      "MNC": "123"
+                                    },
+                                    "TAC": "0xe671"
+                                  },
+                                  "ECGI": {
+                                    "PLMNID": {
+                                      "MCC": "310",
+                                      "MNC": "123"
+                                    },
+                                    "ECI": "432462"
+                                  }
+                                }
+                              ],
+                              "RATType": "EUTRAN",
+                              "GTPUTunnelInfo": {
+                                "DownLinkTunnelRecord": {
+                                  "TunnelInfo": {
+                                    "IPAddr": {
+                                      "IPv6": "fdc0:0:0:310::50"
+                                    },
+                                    "TEID": "0x1e8480"
+                                  }
+                                },
+                                "UpLinkTunnelRecord": {
+                                  "TunnelInfo": {
+                                    "IPAddr": {
+                                      "IPv6": "fdc0:0:0:410::30"
+                                    },
+                                    "TEID": "0x3d0900"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "EBI": 5,
+                        "AccessInfo": {
+                          "APN": "ssenoauth146",
+                          "UEAddress": {
+                            "AddrType": "IPv6",
+                            "Addr": {
+                              "IPv6": "2001::1:1"
+                            }
+                          }
+                        },
+                        "GTPUTunnelList": [
+                          {
+                            "GTPUTunnelInfo": {
+                              "DownLinkTunnelRecord": {
+                                "TunnelInfo": {
+                                  "IPAddr": {
+                                    "IPv6": "fdc0:0:0:310::50"
+                                  },
+                                  "TEID": "0x1e8480"
+                                }
+                              },
+                              "UpLinkTunnelRecord": {
+                                "TunnelInfo": {
+                                  "IPAddr": {
+                                    "IPv6": "fdc0:0:0:410::30"
+                                  },
+                                  "TEID": "0x3d0900"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "EventsSummaryReportRecord": {
+          "NumActivity": 1,
+          "SuccessfulEvents": 1
+        }
+      }
+    ]
+  }
+}
+2020-11-26T03:21:14.215Z	INFO	GTPJSON	GtpcJSON_STATS_EVT_MOD_BEA :1
+2020-11-26T03:21:14.215Z	INFO	correlation	FOUND Event Map SubId:505024101215074
+2020-11-26T03:21:14.215Z	INFO	correlation	UPD IMEI:5050241012150700
+2020-11-26T03:21:14.215Z	INFO	correlation	FOUND INTF IfName:S11, Idx:1
+2020-11-26T03:21:14.215Z	INFO	correlation	FOUND INTF IfName:S11, Idx:1
+2020-11-26T03:21:14.215Z	INFO	correlation	FOUND PDN Idx:0
+2020-11-26T03:21:14.216Z	INFO	correlation	FOUND INTF IfName:S11, Idx:1
+2020-11-26T03:21:14.216Z	INFO	correlation	FOUND PDN Idx:0
+2020-11-26T03:21:14.216Z	INFO	correlation	FOUND BER EBI:5 Idx:0
+2020-11-26T03:21:14.216Z	INFO	correlation	Already Interface, PDN and Bearer present. Update Event list for that bearer
+2020-11-26T03:21:14.216Z	INFO	correlation	FOUND INTF IfName:S11, Idx:1
+2020-11-26T03:21:14.216Z	INFO	correlation	FOUND PDN Idx:0
+2020-11-26T03:21:14.216Z	INFO	correlation	FOUND BER EBI:5 Idx:0
+2020-11-26T03:21:14.216Z	INFO	correlation	FOUND Access Flag SubId(IMSI):505024101215074 INTF:1 Pdn:0 Ber:0 Tun:-1 Flag:1
+2020-11-26T03:21:14.216Z	INFO	correlation	ADD EVENT SubId(IMSI):505024101215074 INTF:S11 EBI:5 EvName:MOD_BEA
+2020-11-26T03:21:14.216Z	INFO	correlation	Bearer SessionId: S11_fdc0:0000:0000:0410:0000:0000:0000:0030_0x3d0900_fdc0:0000:0000:0310:0000:0000:0000:0050_0x1e8480
+2020-11-26T03:21:14.216Z	DEBUG	correlation	GTPU Tunnel Update DownLink
+2020-11-26T03:21:14.216Z	INFO	correlation	GTPUDownLink Tunnel Link set
+2020-11-26T03:21:14.216Z	INFO	correlation	Num Events:3
+2020-11-26T03:21:14.216Z	INFO	correlation	EVT Name:MOD_BEA Index:2
+2020-11-26T03:21:14.216Z	INFO	correlation	ADD EVT: SubId(IMSI):505024101215074 INTF:S11 PDNSession Access IP: TEID:0xf4240 Core IP: TEID:0x2dc6c0 EBI:5 EvName:MOD_BEA EvStart:2020-11-26 03:21:56 +0000 UTC EvEnd:2020-11-26 03:21:56 +0000 UTC
+2020-11-26T03:21:14.216Z	INFO	GTPJSON	GtpcJSON_STATS_SUCC_MOD_BEA_EVT :1
+2020-11-26T03:21:14.217Z	INFO	GtpCjson	GTPJSON_PARSE_ERROR_COUNT : <nil>
+2020-11-26T03:21:14.224Z	INFO	GtpCjson	GTPJSON_PKTS_IN_Count : 4
+2020-11-26T03:21:14.225Z	DEBUG	GTPJSON	RCVD JSON => %s{
+  "version": "1.0.0",
+  "SubscriberActivitySummary": {
+    "NumSubscribers": 1,
+    "SubscribersList": [
+      {
+        "SubscriberId": {
+          "IMSI": "505024101215074",
+          "IMEI": "5050241012150700",
+          "MSISDN": "17962480141"
+        },
+        "InterfaceList": [
+          {
+            "IfName": "S11",
+            "PDNSessionList": [
+              {
+                "UserControlTunnel": {
+                  "GTPCTunnel": {
+                    "AccessGTPCTunnelInfo": {
+                      "IPAddr": {
+                        "IPv6": "fdc0:0:0:310::40"
+                      },
+                      "TEID": "0xf4240"
+                    },
+                    "CoreGTPCTunnelInfo": {
+                      "IPAddr": {
+                        "IPv6": "fdc0:0:0:410::20"
+                      },
+                      "TEID": "0x2dc6c0"
+                    }
+                  }
+                },
+                "UserDataTunnel": {
+                  "BearerInfo": {
+                    "NumBearers": 1,
+                    "BearerList": [
+                      {
+                        "EventActivityList": [
+                          {
+                            "Name": "CRT_BEA",
+                            "StartTime": 1606360916,
+                            "EndTime": 1606360916,
+                            "CauseCode": 16,
+                            "Params": {
+                              "AccessInfo": {
+                                "APN": "ssenoauth146",
+                                "UEAddress": {
+                                  "AddrType": "IPv6",
+                                  "Addr": {
+                                    "IPv6": "2001::1:1"
+                                  }
+                                }
+                              },
+                              "QosInfoList": [
+                                {
+                                  "QCI": 5
+                                }
+                              ],
+                              "LocationInfoList": [
+                                {
+                                  "TAI": {
+                                    "PLMNID": {
+                                      "MCC": "310",
+                                      "MNC": "123"
+                                    },
+                                    "TAC": "0xe671"
+                                  },
+                                  "ECGI": {
+                                    "PLMNID": {
+                                      "MCC": "310",
+                                      "MNC": "123"
+                                    },
+                                    "ECI": "432462"
+                                  }
+                                }
+                              ],
+                              "RATType": "EUTRAN",
+                              "GTPUTunnelInfo": {
+                                "DownLinkTunnelRecord": {
+                                  "TunnelInfo": {
+                                    "IPAddr": {
+                                      "IPv6": "fdc0:0:0:310::50"
+                                    },
+                                    "TEID": "0x1e8481"
+                                  }
+                                },
+                                "UpLinkTunnelRecord": {
+                                  "TunnelInfo": {
+                                    "IPAddr": {
+                                      "IPv6": "fdc0:0:0:410::30"
+                                    },
+                                    "TEID": "0x3d0901"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "EBI": 6,
+                        "LBI": 5,
+                        "AccessInfo": {
+                          "APN": "ssenoauth146",
+                          "UEAddress": {
+                            "AddrType": "IPv6",
+                            "Addr": {
+                              "IPv6": "2001::1:1"
+                            }
+                          }
+                        },
+                        "GTPUTunnelList": [
+                          {
+                            "GTPUTunnelInfo": {
+                              "DownLinkTunnelRecord": {
+                                "TunnelInfo": {
+                                  "IPAddr": {
+                                    "IPv6": "fdc0:0:0:310::50"
+                                  },
+                                  "TEID": "0x1e8481"
+                                }
+                              },
+                              "UpLinkTunnelRecord": {
+                                "TunnelInfo": {
+                                  "IPAddr": {
+                                    "IPv6": "fdc0:0:0:410::30"
+                                  },
+                                  "TEID": "0x3d0901"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "EventsSummaryReportRecord": {
+          "NumActivity": 1,
+          "SuccessfulEvents": 1
+        }
+      }
+    ]
+  }
+}
+2020-11-26T03:21:14.226Z	INFO	GTPJSON	GtpcJSON_STATS_EVT_CRT_BEA :1
+2020-11-26T03:21:14.226Z	INFO	correlation	FOUND Event Map SubId:505024101215074
+2020-11-26T03:21:14.226Z	INFO	correlation	UPD IMEI:5050241012150700
+2020-11-26T03:21:14.226Z	INFO	correlation	FOUND INTF IfName:S11, Idx:1
+2020-11-26T03:21:14.226Z	INFO	correlation	FOUND INTF IfName:S11, Idx:1
+2020-11-26T03:21:14.226Z	INFO	correlation	FOUND PDN Idx:0
+2020-11-26T03:21:14.226Z	INFO	correlation	FOUND INTF IfName:S11, Idx:1
+2020-11-26T03:21:14.226Z	INFO	correlation	FOUND PDN Idx:0
+2020-11-26T03:21:14.226Z	INFO	correlation	Bearer SessionId
+2020-11-26T03:21:14.226Z	INFO	correlation	SET Access Flag SubId(IMSI):505024101215074 INTF:1 Pdn:0 Ber:1 Tun:-1 Flag:1
+2020-11-26T03:21:14.226Z	INFO	correlation	Bearer SessionId: S11_fdc0:0000:0000:0410:0000:0000:0000:0030_0x3d0901_fdc0:0000:0000:0310:0000:0000:0000:0050_0x1e8481
+2020-11-26T03:21:14.226Z	DEBUG	correlation	GTPU Tunnel Create UpDownLink
+2020-11-26T03:21:14.226Z	INFO	correlation	GTPUUpLink Tunnel Link set
+2020-11-26T03:21:14.226Z	INFO	correlation	GTPUDownLink Tunnel Link set
+2020-11-26T03:21:14.226Z	INFO	correlation	Num Events:4
+2020-11-26T03:21:14.226Z	INFO	correlation	Added Bearer and Event
+2020-11-26T03:21:14.226Z	INFO	GTPJSON	GtpcJSON_STATS_SUCC_CRT_BEA_EVT :1
+2020-11-26T03:21:14.226Z	INFO	GtpCjson	GTPJSON_PARSE_ERROR_COUNT : <nil>
+2020-11-26T03:21:14.235Z	INFO	GtpCjson	GTPJSON_PKTS_IN_Count : 5
+2020-11-26T03:21:14.236Z	DEBUG	GTPJSON	RCVD JSON => %s{
+  "version": "1.0.0",
+  "SubscriberActivitySummary": {
+    "NumSubscribers": 1,
+    "SubscribersList": [
+      {
+        "SubscriberId": {
+          "IMSI": "505024101215074",
+          "MSISDN": "17962480141"
+        },
+        "InterfaceList": [
+          {
+            "IfName": "S5",
+            "PDNSessionList": [
+              {
+                "UserControlTunnel": {
+                  "GTPCTunnel": {
+                    "AccessGTPCTunnelInfo": {
+                      "IPAddr": {
+                        "IPv6": "fdc0:0:0:410::20"
+                      },
+                      "TEID": "0x4c4b40"
+                    },
+                    "CoreGTPCTunnelInfo": {
+                      "IPAddr": {
+                        "IPv6": "fdc0:0:0:310::100"
+                      },
+                      "TEID": "0xf4240"
+                    }
+                  }
+                },
+                "UserDataTunnel": {
+                  "BearerInfo": {
+                    "NumBearers": 1,
+                    "BearerList": [
+                      {
+                        "EventActivityList": [
+                          {
+                            "Name": "CRT_BEA",
+                            "StartTime": 1606360916,
+                            "EndTime": 1606360916,
+                            "CauseCode": 16,
+                            "Params": {
+                              "AccessInfo": {
+                                "APN": "ssenoauth146",
+                                "UEAddress": {
+                                  "AddrType": "IPv6",
+                                  "Addr": {
+                                    "IPv6": "2001::1:1"
+                                  }
+                                }
+                              },
+                              "QosInfoList": [
+                                {
+                                  "QCI": 5
+                                }
+                              ],
+                              "LocationInfoList": [
+                                {
+                                  "TAI": {
+                                    "PLMNID": {
+                                      "MCC": "310",
+                                      "MNC": "123"
+                                    },
+                                    "TAC": "0x1edb"
+                                  },
+                                  "ECGI": {
+                                    "PLMNID": {
+                                      "MCC": "310",
+                                      "MNC": "123"
+                                    },
+                                    "ECI": "432462"
+                                  }
+                                }
+                              ],
+                              "RATType": "EUTRAN",
+                              "GTPUTunnelInfo": {
+                                "DownLinkTunnelRecord": {
+                                  "TunnelInfo": {
+                                    "IPAddr": {
+                                      "IPv6": "fdc0:0:0:410::30"
+                                    },
+                                    "TEID": "0x5b8d81"
+                                  }
+                                },
+                                "UpLinkTunnelRecord": {
+                                  "TunnelInfo": {
+                                    "IPAddr": {
+                                      "IPv6": "fdc0:0:0:310::100"
+                                    },
+                                    "TEID": "0x1e8481"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "EBI": 6,
+                        "LBI": 5,
+                        "AccessInfo": {
+                          "APN": "ssenoauth146",
+                          "UEAddress": {
+                            "AddrType": "IPv6",
+                            "Addr": {
+                              "IPv6": "2001::1:1"
+                            }
+                          }
+                        },
+                        "GTPUTunnelList": [
+                          {
+                            "GTPUTunnelInfo": {
+                              "DownLinkTunnelRecord": {
+                                "TunnelInfo": {
+                                  "IPAddr": {
+                                    "IPv6": "fdc0:0:0:410::30"
+                                  },
+                                  "TEID": "0x5b8d81"
+                                }
+                              },
+                              "UpLinkTunnelRecord": {
+                                "TunnelInfo": {
+                                  "IPAddr": {
+                                    "IPv6": "fdc0:0:0:310::100"
+                                  },
+                                  "TEID": "0x1e8481"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "EventsSummaryReportRecord": {
+          "NumActivity": 1,
+          "SuccessfulEvents": 1
+        }
+      }
+    ]
+  }
+}
+2020-11-26T03:21:14.237Z	INFO	GTPJSON	GtpcJSON_STATS_EVT_CRT_BEA :2
+2020-11-26T03:21:14.237Z	INFO	correlation	FOUND Event Map SubId:505024101215074
+2020-11-26T03:21:14.237Z	INFO	correlation	FOUND INTF IfName:S5, Idx:0
+2020-11-26T03:21:14.237Z	INFO	correlation	FOUND INTF IfName:S5, Idx:0
+2020-11-26T03:21:14.237Z	INFO	correlation	FOUND PDN Idx:0
+2020-11-26T03:21:14.237Z	INFO	correlation	FOUND INTF IfName:S5, Idx:0
+2020-11-26T03:21:14.237Z	INFO	correlation	FOUND PDN Idx:0
+2020-11-26T03:21:14.237Z	INFO	correlation	Bearer SessionId
+2020-11-26T03:21:14.237Z	INFO	correlation	SET Access Flag SubId(IMSI):505024101215074 INTF:0 Pdn:0 Ber:1 Tun:-1 Flag:1
+2020-11-26T03:21:14.237Z	INFO	correlation	Bearer SessionId: S5_fdc0:0000:0000:0310:0000:0000:0000:0100_0x1e8481_fdc0:0000:0000:0410:0000:0000:0000:0030_0x5b8d81
+2020-11-26T03:21:14.237Z	DEBUG	correlation	GTPU Tunnel Create UpDownLink
+2020-11-26T03:21:14.237Z	INFO	correlation	GTPUUpLink Tunnel Link set
+2020-11-26T03:21:14.237Z	INFO	correlation	GTPUDownLink Tunnel Link set
+2020-11-26T03:21:14.237Z	INFO	correlation	Num Events:5
+2020-11-26T03:21:14.237Z	INFO	correlation	Added Bearer and Event
+2020-11-26T03:21:14.237Z	INFO	GTPJSON	GtpcJSON_STATS_SUCC_CRT_BEA_EVT :2
+2020-11-26T03:21:14.237Z	INFO	GtpCjson	GTPJSON_PARSE_ERROR_COUNT : <nil>
+2020-11-26T03:21:15.971Z	INFO	GtpCjson	GTPJSON_PKTS_IN_Count : 6
+2020-11-26T03:21:15.972Z	DEBUG	GTPJSON	RCVD JSON => %s{
+  "version": "1.0.0",
+  "SubscriberActivitySummary": {
+    "NumSubscribers": 1,
+    "SubscribersList": [
+      {
+        "SubscriberId": {
+          "IMSI": "505024101215074",
+          "IMEI": "5050241012150700",
+          "MSISDN": "17962480141"
+        },
+        "InterfaceList": [
+          {
+            "IfName": "S11",
+            "PDNSessionList": [
+              {
+                "UserControlTunnel": {
+                  "GTPCTunnel": {
+                    "AccessGTPCTunnelInfo": {
+                      "IPAddr": {
+                        "IPv6": "fdc0:0:0:310::40"
+                      },
+                      "TEID": "0xf4240"
+                    },
+                    "CoreGTPCTunnelInfo": {
+                      "IPAddr": {
+                        "IPv6": "fdc0:0:0:410::20"
+                      },
+                      "TEID": "0x2dc6c0"
+                    }
+                  }
+                },
+                "UserDataTunnel": {
+                  "BearerInfo": {
+                    "NumBearers": 1,
+                    "BearerList": [
+                      {
+                        "EventActivityList": [
+                          {
+                            "Name": "UPD_BEA",
+                            "StartTime": 1606360918,
+                            "EndTime": 1606360918,
+                            "CauseCode": 16,
+                            "Params": {
+                              "AccessInfo": {
+                                "APN": "ssenoauth146",
+                                "UEAddress": {
+                                  "AddrType": "IPv6",
+                                  "Addr": {
+                                    "IPv6": "2001::1:1"
+                                  }
+                                }
+                              },
+                              "QosInfoList": [
+                                {
+                                  "QCI": 4
+                                }
+                              ],
+                              "LocationInfoList": [
+                                {
+                                  "TAI": {
+                                    "PLMNID": {
+                                      "MCC": "310",
+                                      "MNC": "123"
+                                    },
+                                    "TAC": "0xe671"
+                                  },
+                                  "ECGI": {
+                                    "PLMNID": {
+                                      "MCC": "310",
+                                      "MNC": "123"
+                                    },
+                                    "ECI": "432462"
+                                  }
+                                }
+                              ],
+                              "RATType": "EUTRAN",
+                              "GTPUTunnelInfo": {
+                                "DownLinkTunnelRecord": {
+                                  "TunnelInfo": {
+                                    "IPAddr": {
+                                      "IPv6": "fdc0:0:0:310::50"
+                                    },
+                                    "TEID": "0x1e8480"
+                                  }
+                                },
+                                "UpLinkTunnelRecord": {
+                                  "TunnelInfo": {
+                                    "IPAddr": {
+                                      "IPv6": "fdc0:0:0:410::30"
+                                    },
+                                    "TEID": "0x3d0900"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "EBI": 5,
+                        "AccessInfo": {
+                          "APN": "ssenoauth146",
+                          "UEAddress": {
+                            "AddrType": "IPv6",
+                            "Addr": {
+                              "IPv6": "2001::1:1"
+                            }
+                          }
+                        },
+                        "GTPUTunnelList": [
+                          {
+                            "GTPUTunnelInfo": {
+                              "DownLinkTunnelRecord": {
+                                "TunnelInfo": {
+                                  "IPAddr": {
+                                    "IPv6": "fdc0:0:0:310::50"
+                                  },
+                                  "TEID": "0x1e8480"
+                                }
+                              },
+                              "UpLinkTunnelRecord": {
+                                "TunnelInfo": {
+                                  "IPAddr": {
+                                    "IPv6": "fdc0:0:0:410::30"
+                                  },
+                                  "TEID": "0x3d0900"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "EventsSummaryReportRecord": {
+          "NumActivity": 1,
+          "SuccessfulEvents": 1
+        }
+      }
+    ]
+  }
+}
+2020-11-26T03:21:15.973Z	INFO	GTPJSON	GtpcJSON_STATS_EVT_UPD_BEA :1
+2020-11-26T03:21:15.973Z	INFO	correlation	FOUND Event Map SubId:505024101215074
+2020-11-26T03:21:15.973Z	INFO	correlation	UPD IMEI:5050241012150700
+2020-11-26T03:21:15.973Z	INFO	correlation	FOUND INTF IfName:S11, Idx:1
+2020-11-26T03:21:15.973Z	INFO	correlation	FOUND INTF IfName:S11, Idx:1
+2020-11-26T03:21:15.973Z	INFO	correlation	FOUND PDN Idx:0
+2020-11-26T03:21:15.973Z	INFO	correlation	FOUND INTF IfName:S11, Idx:1
+2020-11-26T03:21:15.973Z	INFO	correlation	FOUND PDN Idx:0
+2020-11-26T03:21:15.973Z	INFO	correlation	FOUND BER EBI:5 Idx:0
+2020-11-26T03:21:15.973Z	INFO	correlation	Already Interface, PDN and Bearer present. Update Event list for that bearer
+2020-11-26T03:21:15.973Z	INFO	correlation	FOUND INTF IfName:S11, Idx:1
+2020-11-26T03:21:15.973Z	INFO	correlation	FOUND PDN Idx:0
+2020-11-26T03:21:15.974Z	INFO	correlation	FOUND BER EBI:5 Idx:0
+2020-11-26T03:21:15.974Z	INFO	correlation	FOUND Access Flag SubId(IMSI):505024101215074 INTF:1 Pdn:0 Ber:0 Tun:-1 Flag:1
+2020-11-26T03:21:15.974Z	INFO	correlation	ADD EVENT SubId(IMSI):505024101215074 INTF:S11 EBI:5 EvName:UPD_BEA
+2020-11-26T03:21:15.974Z	DEBUG	correlation	GTPU Tunnel Update not required
+2020-11-26T03:21:15.974Z	INFO	correlation	Num Events:6
+2020-11-26T03:21:15.974Z	INFO	correlation	EVT Name:UPD_BEA Index:3
+2020-11-26T03:21:15.974Z	INFO	correlation	ADD EVT: SubId(IMSI):505024101215074 INTF:S11 PDNSession Access IP: TEID:0xf4240 Core IP: TEID:0x2dc6c0 EBI:5 EvName:UPD_BEA EvStart:2020-11-26 03:21:58 +0000 UTC EvEnd:2020-11-26 03:21:58 +0000 UTC
+2020-11-26T03:21:15.974Z	INFO	GTPJSON	GtpcJSON_STATS_SUCC_UPD_BEA_EVT :1
+2020-11-26T03:21:15.974Z	INFO	GtpCjson	GTPJSON_PARSE_ERROR_COUNT : <nil>
+2020-11-26T03:21:15.982Z	INFO	GtpCjson	GTPJSON_PKTS_IN_Count : 7
+2020-11-26T03:21:15.983Z	DEBUG	GTPJSON	RCVD JSON => %s{
+  "version": "1.0.0",
+  "SubscriberActivitySummary": {
+    "NumSubscribers": 1,
+    "SubscribersList": [
+      {
+        "SubscriberId": {
+          "IMSI": "505024101215074",
+          "MSISDN": "17962480141"
+        },
+        "InterfaceList": [
+          {
+            "IfName": "S5",
+            "PDNSessionList": [
+              {
+                "UserControlTunnel": {
+                  "GTPCTunnel": {
+                    "AccessGTPCTunnelInfo": {
+                      "IPAddr": {
+                        "IPv6": "fdc0:0:0:410::20"
+                      },
+                      "TEID": "0x4c4b40"
+                    },
+                    "CoreGTPCTunnelInfo": {
+                      "IPAddr": {
+                        "IPv6": "fdc0:0:0:310::100"
+                      },
+                      "TEID": "0xf4240"
+                    }
+                  }
+                },
+                "UserDataTunnel": {
+                  "BearerInfo": {
+                    "NumBearers": 1,
+                    "BearerList": [
+                      {
+                        "EventActivityList": [
+                          {
+                            "Name": "UPD_BEA",
+                            "StartTime": 1606360918,
+                            "EndTime": 1606360918,
+                            "CauseCode": 16,
+                            "Params": {
+                              "AccessInfo": {
+                                "APN": "ssenoauth146",
+                                "UEAddress": {
+                                  "AddrType": "IPv6",
+                                  "Addr": {
+                                    "IPv6": "2001::1:1"
+                                  }
+                                }
+                              },
+                              "QosInfoList": [
+                                {
+                                  "QCI": 4
+                                }
+                              ],
+                              "LocationInfoList": [
+                                {
+                                  "TAI": {
+                                    "PLMNID": {
+                                      "MCC": "310",
+                                      "MNC": "123"
+                                    },
+                                    "TAC": "0x1edb"
+                                  },
+                                  "ECGI": {
+                                    "PLMNID": {
+                                      "MCC": "310",
+                                      "MNC": "123"
+                                    },
+                                    "ECI": "432462"
+                                  }
+                                }
+                              ],
+                              "RATType": "EUTRAN",
+                              "GTPUTunnelInfo": {
+                                "DownLinkTunnelRecord": {
+                                  "TunnelInfo": {
+                                    "IPAddr": {
+                                      "IPv6": "fdc0:0:0:410::30"
+                                    },
+                                    "TEID": "0x5b8d80"
+                                  }
+                                },
+                                "UpLinkTunnelRecord": {
+                                  "TunnelInfo": {
+                                    "IPAddr": {
+                                      "IPv6": "fdc0:0:0:310::100"
+                                    },
+                                    "TEID": "0x1e8480"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "EBI": 5,
+                        "AccessInfo": {
+                          "APN": "ssenoauth146",
+                          "UEAddress": {
+                            "AddrType": "IPv6",
+                            "Addr": {
+                              "IPv6": "2001::1:1"
+                            }
+                          }
+                        },
+                        "GTPUTunnelList": [
+                          {
+                            "GTPUTunnelInfo": {
+                              "DownLinkTunnelRecord": {
+                                "TunnelInfo": {
+                                  "IPAddr": {
+                                    "IPv6": "fdc0:0:0:410::30"
+                                  },
+                                  "TEID": "0x5b8d80"
+                                }
+                              },
+                              "UpLinkTunnelRecord": {
+                                "TunnelInfo": {
+                                  "IPAddr": {
+                                    "IPv6": "fdc0:0:0:310::100"
+                                  },
+                                  "TEID": "0x1e8480"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "EventsSummaryReportRecord": {
+          "NumActivity": 1,
+          "SuccessfulEvents": 1
+        }
+      }
+    ]
+  }
+}
+2020-11-26T03:21:15.984Z	INFO	GTPJSON	GtpcJSON_STATS_EVT_UPD_BEA :2
+2020-11-26T03:21:15.984Z	INFO	correlation	FOUND Event Map SubId:505024101215074
+2020-11-26T03:21:15.984Z	INFO	correlation	FOUND INTF IfName:S5, Idx:0
+2020-11-26T03:21:15.984Z	INFO	correlation	FOUND INTF IfName:S5, Idx:0
+2020-11-26T03:21:15.984Z	INFO	correlation	FOUND PDN Idx:0
+2020-11-26T03:21:15.984Z	INFO	correlation	FOUND INTF IfName:S5, Idx:0
+2020-11-26T03:21:15.984Z	INFO	correlation	FOUND PDN Idx:0
+2020-11-26T03:21:15.984Z	INFO	correlation	FOUND BER EBI:5 Idx:0
+2020-11-26T03:21:15.984Z	INFO	correlation	Already Interface, PDN and Bearer present. Update Event list for that bearer
+2020-11-26T03:21:15.984Z	INFO	correlation	FOUND INTF IfName:S5, Idx:0
+2020-11-26T03:21:15.984Z	INFO	correlation	FOUND PDN Idx:0
+2020-11-26T03:21:15.984Z	INFO	correlation	FOUND BER EBI:5 Idx:0
+2020-11-26T03:21:15.984Z	INFO	correlation	FOUND Access Flag SubId(IMSI):505024101215074 INTF:0 Pdn:0 Ber:0 Tun:-1 Flag:1
+2020-11-26T03:21:15.984Z	INFO	correlation	ADD EVENT SubId(IMSI):505024101215074 INTF:S5 EBI:5 EvName:UPD_BEA
+2020-11-26T03:21:15.984Z	DEBUG	correlation	GTPU Tunnel Update not required
+2020-11-26T03:21:15.984Z	INFO	correlation	Num Events:7
+2020-11-26T03:21:15.984Z	INFO	correlation	EVT Name:UPD_BEA Index:2
+2020-11-26T03:21:15.984Z	INFO	correlation	ADD EVT: SubId(IMSI):505024101215074 INTF:S5 PDNSession Access IP: TEID:0x4c4b40 Core IP: TEID:0xf4240 EBI:5 EvName:UPD_BEA EvStart:2020-11-26 03:21:58 +0000 UTC EvEnd:2020-11-26 03:21:58 +0000 UTC
+2020-11-26T03:21:15.984Z	INFO	GTPJSON	GtpcJSON_STATS_SUCC_UPD_BEA_EVT :2
+2020-11-26T03:21:15.984Z	INFO	GtpCjson	GTPJSON_PARSE_ERROR_COUNT : <nil>
+2020-11-26T03:21:28.199Z	INFO	GtpCjson	GTPJSON_PKTS_IN_Count : 8
+2020-11-26T03:21:28.199Z	DEBUG	GTPJSON	RCVD JSON => %s{
+  "version": "1.0.0",
+  "SubscriberActivitySummary": {
+    "NumSubscribers": 1,
+    "SubscribersList": [
+      {
+        "SubscriberId": {
+          "IMSI": "505024101215074",
+          "MSISDN": "17962480141"
+        },
+        "InterfaceList": [
+          {
+            "IfName": "S5",
+            "PDNSessionList": [
+              {
+                "UserControlTunnel": {
+                  "GTPCTunnel": {
+                    "AccessGTPCTunnelInfo": {
+                      "IPAddr": {
+                        "IPv6": "fdc0:0:0:410::20"
+                      },
+                      "TEID": "0x4c4b40"
+                    },
+                    "CoreGTPCTunnelInfo": {
+                      "IPAddr": {
+                        "IPv6": "fdc0:0:0:310::100"
+                      },
+                      "TEID": "0xf4240"
+                    }
+                  }
+                },
+                "UserDataTunnel": {
+                  "BearerInfo": {
+                    "NumBearers": 1,
+                    "BearerList": [
+                      {
+                        "EventActivityList": [
+                          {
+                            "Name": "DEL_SES",
+                            "StartTime": 1606360930,
+                            "EndTime": 1606360930,
+                            "CauseCode": 16,
+                            "Params": {
+                              "AccessInfo": {
+                                "APN": "ssenoauth146",
+                                "UEAddress": {
+                                  "AddrType": "IPv6",
+                                  "Addr": {
+                                    "IPv6": "2001::1:1"
+                                  }
+                                }
+                              },
+                              "QosInfoList": [
+                                {
+                                  "QCI": 5
+                                }
+                              ],
+                              "LocationInfoList": [
+                                {
+                                  "TAI": {
+                                    "PLMNID": {
+                                      "MCC": "310",
+                                      "MNC": "123"
+                                    },
+                                    "TAC": "0x1edb"
+                                  },
+                                  "ECGI": {
+                                    "PLMNID": {
+                                      "MCC": "310",
+                                      "MNC": "123"
+                                    },
+                                    "ECI": "432462"
+                                  }
+                                }
+                              ],
+                              "RATType": "EUTRAN",
+                              "GTPUTunnelInfo": {
+                                "DownLinkTunnelRecord": {
+                                  "TunnelInfo": {
+                                    "IPAddr": {
+                                      "IPv6": "fdc0:0:0:410::30"
+                                    },
+                                    "TEID": "0x5b8d81"
+                                  }
+                                },
+                                "UpLinkTunnelRecord": {
+                                  "TunnelInfo": {
+                                    "IPAddr": {
+                                      "IPv6": "fdc0:0:0:310::100"
+                                    },
+                                    "TEID": "0x1e8481"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "EBI": 6,
+                        "LBI": 5,
+                        "AccessInfo": {
+                          "APN": "ssenoauth146",
+                          "UEAddress": {
+                            "AddrType": "IPv6",
+                            "Addr": {
+                              "IPv6": "2001::1:1"
+                            }
+                          }
+                        },
+                        "GTPUTunnelList": [
+                          {
+                            "GTPUTunnelInfo": {
+                              "DownLinkTunnelRecord": {
+                                "TunnelInfo": {
+                                  "IPAddr": {
+                                    "IPv6": "fdc0:0:0:410::30"
+                                  },
+                                  "TEID": "0x5b8d81"
+                                }
+                              },
+                              "UpLinkTunnelRecord": {
+                                "TunnelInfo": {
+                                  "IPAddr": {
+                                    "IPv6": "fdc0:0:0:310::100"
+                                  },
+                                  "TEID": "0x1e8481"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "EventsSummaryReportRecord": {
+          "NumActivity": 1,
+          "SuccessfulEvents": 1
+        }
+      }
+    ]
+  }
+}
+2020-11-26T03:21:28.199Z	INFO	GtpCjson	GTPJSON_PKTS_IN_Count : 9
+2020-11-26T03:21:28.200Z	DEBUG	GTPJSON	RCVD JSON => %s{
+  "version": "1.0.0",
+  "SubscriberActivitySummary": {
+    "NumSubscribers": 1,
+    "SubscribersList": [
+      {
+        "SubscriberId": {
+          "IMSI": "505024101215074",
+          "MSISDN": "17962480141"
+        },
+        "InterfaceList": [
+          {
+            "IfName": "S5",
+            "PDNSessionList": [
+              {
+                "UserControlTunnel": {
+                  "GTPCTunnel": {
+                    "AccessGTPCTunnelInfo": {
+                      "IPAddr": {
+                        "IPv6": "fdc0:0:0:410::20"
+                      },
+                      "TEID": "0x4c4b40"
+                    },
+                    "CoreGTPCTunnelInfo": {
+                      "IPAddr": {
+                        "IPv6": "fdc0:0:0:310::100"
+                      },
+                      "TEID": "0xf4240"
+                    }
+                  }
+                },
+                "UserDataTunnel": {
+                  "BearerInfo": {
+                    "NumBearers": 1,
+                    "BearerList": [
+                      {
+                        "EventActivityList": [
+                          {
+                            "Name": "DEL_SES",
+                            "StartTime": 1606360930,
+                            "EndTime": 1606360930,
+                            "CauseCode": 16,
+                            "Params": {
+                              "AccessInfo": {
+                                "APN": "ssenoauth146",
+                                "UEAddress": {
+                                  "AddrType": "IPv6",
+                                  "Addr": {
+                                    "IPv6": "2001::1:1"
+                                  }
+                                }
+                              },
+                              "QosInfoList": [
+                                {
+                                  "QCI": 4
+                                }
+                              ],
+                              "LocationInfoList": [
+                                {
+                                  "TAI": {
+                                    "PLMNID": {
+                                      "MCC": "310",
+                                      "MNC": "123"
+                                    },
+                                    "TAC": "0x1edb"
+                                  },
+                                  "ECGI": {
+                                    "PLMNID": {
+                                      "MCC": "310",
+                                      "MNC": "123"
+                                    },
+                                    "ECI": "432462"
+                                  }
+                                }
+                              ],
+                              "RATType": "EUTRAN",
+                              "GTPUTunnelInfo": {
+                                "DownLinkTunnelRecord": {
+                                  "TunnelInfo": {
+                                    "IPAddr": {
+                                      "IPv6": "fdc0:0:0:410::30"
+                                    },
+                                    "TEID": "0x5b8d80"
+                                  }
+                                },
+                                "UpLinkTunnelRecord": {
+                                  "TunnelInfo": {
+                                    "IPAddr": {
+                                      "IPv6": "fdc0:0:0:310::100"
+                                    },
+                                    "TEID": "0x1e8480"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "EBI": 5,
+                        "AccessInfo": {
+                          "APN": "ssenoauth146",
+                          "UEAddress": {
+                            "AddrType": "IPv6",
+                            "Addr": {
+                              "IPv6": "2001::1:1"
+                            }
+                          }
+                        },
+                        "GTPUTunnelList": [
+                          {
+                            "GTPUTunnelInfo": {
+                              "DownLinkTunnelRecord": {
+                                "TunnelInfo": {
+                                  "IPAddr": {
+                                    "IPv6": "fdc0:0:0:410::30"
+                                  },
+                                  "TEID": "0x5b8d80"
+                                }
+                              },
+                              "UpLinkTunnelRecord": {
+                                "TunnelInfo": {
+                                  "IPAddr": {
+                                    "IPv6": "fdc0:0:0:310::100"
+                                  },
+                                  "TEID": "0x1e8480"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "EventsSummaryReportRecord": {
+          "NumActivity": 1,
+          "SuccessfulEvents": 1
+        }
+      }
+    ]
+  }
+}
+2020-11-26T03:21:28.200Z	INFO	GTPJSON	GtpcJSON_STATS_EVT_DEL_SES :1
+2020-11-26T03:21:28.201Z	INFO	correlation	FOUND Event Map SubId:505024101215074
+2020-11-26T03:21:28.201Z	INFO	correlation	FOUND INTF IfName:S5, Idx:0
+2020-11-26T03:21:28.201Z	INFO	correlation	FOUND INTF IfName:S5, Idx:0
+2020-11-26T03:21:28.201Z	INFO	correlation	FOUND PDN Idx:0
+2020-11-26T03:21:28.201Z	INFO	correlation	FOUND INTF IfName:S5, Idx:0
+2020-11-26T03:21:28.201Z	INFO	correlation	FOUND PDN Idx:0
+2020-11-26T03:21:28.201Z	INFO	correlation	FOUND BER EBI:6 Idx:1
+2020-11-26T03:21:28.201Z	INFO	GTPJSON	GtpcJSON_STATS_EVT_DEL_SES :2
+2020-11-26T03:21:28.201Z	INFO	correlation	Already Interface, PDN and Bearer present. Update Event list for that bearer
+2020-11-26T03:21:28.201Z	INFO	correlation	FOUND Event Map SubId:505024101215074
+2020-11-26T03:21:28.201Z	INFO	correlation	FOUND INTF IfName:S5, Idx:0
+2020-11-26T03:21:28.201Z	INFO	correlation	FOUND INTF IfName:S5, Idx:0
+2020-11-26T03:21:28.201Z	INFO	correlation	FOUND PDN Idx:0
+2020-11-26T03:21:28.201Z	INFO	correlation	FOUND INTF IfName:S5, Idx:0
+2020-11-26T03:21:28.201Z	INFO	correlation	FOUND PDN Idx:0
+2020-11-26T03:21:28.201Z	INFO	correlation	FOUND BER EBI:5 Idx:0
+2020-11-26T03:21:28.201Z	INFO	correlation	Already Interface, PDN and Bearer present. Update Event list for that bearer
+2020-11-26T03:21:28.201Z	INFO	correlation	FOUND INTF IfName:S5, Idx:0
+2020-11-26T03:21:28.201Z	INFO	correlation	FOUND PDN Idx:0
+2020-11-26T03:21:28.201Z	INFO	correlation	FOUND BER EBI:6 Idx:1
+2020-11-26T03:21:28.201Z	INFO	correlation	FOUND Access Flag SubId(IMSI):505024101215074 INTF:0 Pdn:0 Ber:1 Tun:-1 Flag:1
+2020-11-26T03:21:28.201Z	INFO	correlation	ADD EVENT SubId(IMSI):505024101215074 INTF:S5 EBI:6 EvName:DEL_SES
+2020-11-26T03:21:28.201Z	INFO	correlation	Num Events:8
+2020-11-26T03:21:28.201Z	INFO	correlation	EVT Name:DEL_SES Index:2
+2020-11-26T03:21:28.202Z	INFO	correlation	ADD EVT: SubId(IMSI):505024101215074 INTF:S5 PDNSession Access IP: TEID:0x4c4b40 Core IP: TEID:0xf4240 EBI:6 EvName:DEL_SES EvStart:2020-11-26 03:22:10 +0000 UTC EvEnd:2020-11-26 03:22:10 +0000 UTC
+2020-11-26T03:21:28.202Z	INFO	correlation	FOUND INTF IfName:S5, Idx:0
+2020-11-26T03:21:28.202Z	INFO	correlation	FOUND PDN Idx:0
+2020-11-26T03:21:28.202Z	INFO	correlation	FOUND BER EBI:6 Idx:1
+2020-11-26T03:21:28.202Z	INFO	correlation	SET Access Flag SubId(IMSI):505024101215074 INTF:0 Pdn:0 Ber:1 Tun:0 Flag:1024
+2020-11-26T03:21:28.202Z	INFO	correlation	DEL BER SubId(IMSI):505024101215074 INTF:S5 EBI:6 LBI:5
+2020-11-26T03:21:28.202Z	INFO	correlation	Bearer Deleted mark set
+2020-11-26T03:21:28.202Z	INFO	correlation	FOUND INTF IfName:S5, Idx:0
+2020-11-26T03:21:28.202Z	INFO	GTPJSON	GtpcJSON_STATS_SUCC_DEL_SES_EVT :1
+2020-11-26T03:21:28.202Z	INFO	correlation	FOUND PDN Idx:0
+2020-11-26T03:21:28.202Z	INFO	correlation	FOUND BER EBI:5 Idx:0
+2020-11-26T03:21:28.202Z	INFO	correlation	FOUND Access Flag SubId(IMSI):505024101215074 INTF:0 Pdn:0 Ber:0 Tun:-1 Flag:1
+2020-11-26T03:21:28.202Z	INFO	GtpCjson	GTPJSON_PARSE_ERROR_COUNT : <nil>
+2020-11-26T03:21:28.202Z	INFO	correlation	ADD EVENT SubId(IMSI):505024101215074 INTF:S5 EBI:5 EvName:DEL_SES
+2020-11-26T03:21:28.202Z	INFO	correlation	Num Events:9
+2020-11-26T03:21:28.202Z	INFO	correlation	EVT Name:DEL_SES Index:3
+2020-11-26T03:21:28.202Z	INFO	correlation	ADD EVT: SubId(IMSI):505024101215074 INTF:S5 PDNSession Access IP: TEID:0x4c4b40 Core IP: TEID:0xf4240 EBI:5 EvName:DEL_SES EvStart:2020-11-26 03:22:10 +0000 UTC EvEnd:2020-11-26 03:22:10 +0000 UTC
+2020-11-26T03:21:28.202Z	INFO	correlation	FOUND INTF IfName:S5, Idx:0
+2020-11-26T03:21:28.202Z	INFO	correlation	FOUND PDN Idx:0
+2020-11-26T03:21:28.202Z	INFO	correlation	FOUND BER EBI:5 Idx:0
+2020-11-26T03:21:28.202Z	INFO	correlation	SET Access Flag SubId(IMSI):505024101215074 INTF:0 Pdn:0 Ber:0 Tun:0 Flag:1024
+2020-11-26T03:21:28.202Z	INFO	correlation	DEL BER SubId(IMSI):505024101215074 INTF:S5 EBI:5 LBI:0
+2020-11-26T03:21:28.202Z	INFO	correlation	Bearer Deleted mark set
+2020-11-26T03:21:28.202Z	INFO	GTPJSON	GtpcJSON_STATS_SUCC_DEL_SES_EVT :2
+2020-11-26T03:21:28.202Z	INFO	GtpCjson	GTPJSON_PARSE_ERROR_COUNT : <nil>
+2020-11-26T03:21:28.210Z	INFO	GtpCjson	GTPJSON_PKTS_IN_Count : 10
+2020-11-26T03:21:28.210Z	DEBUG	GTPJSON	RCVD JSON => %s{
+  "version": "1.0.0",
+  "SubscriberActivitySummary": {
+    "NumSubscribers": 1,
+    "SubscribersList": [
+      {
+        "SubscriberId": {
+          "IMSI": "505024101215074",
+          "IMEI": "5050241012150700",
+          "MSISDN": "17962480141"
+        },
+        "InterfaceList": [
+          {
+            "IfName": "S11",
+            "PDNSessionList": [
+              {
+                "UserControlTunnel": {
+                  "GTPCTunnel": {
+                    "AccessGTPCTunnelInfo": {
+                      "IPAddr": {
+                        "IPv6": "fdc0:0:0:310::40"
+                      },
+                      "TEID": "0xf4240"
+                    },
+                    "CoreGTPCTunnelInfo": {
+                      "IPAddr": {
+                        "IPv6": "fdc0:0:0:410::20"
+                      },
+                      "TEID": "0x2dc6c0"
+                    }
+                  }
+                },
+                "UserDataTunnel": {
+                  "BearerInfo": {
+                    "NumBearers": 1,
+                    "BearerList": [
+                      {
+                        "EventActivityList": [
+                          {
+                            "Name": "DEL_SES",
+                            "StartTime": 1606360930,
+                            "EndTime": 1606360930,
+                            "CauseCode": 16,
+                            "Params": {
+                              "AccessInfo": {
+                                "APN": "ssenoauth146",
+                                "UEAddress": {
+                                  "AddrType": "IPv6",
+                                  "Addr": {
+                                    "IPv6": "2001::1:1"
+                                  }
+                                }
+                              },
+                              "QosInfoList": [
+                                {
+                                  "QCI": 5
+                                }
+                              ],
+                              "LocationInfoList": [
+                                {
+                                  "TAI": {
+                                    "PLMNID": {
+                                      "MCC": "310",
+                                      "MNC": "123"
+                                    },
+                                    "TAC": "0xe671"
+                                  },
+                                  "ECGI": {
+                                    "PLMNID": {
+                                      "MCC": "310",
+                                      "MNC": "123"
+                                    },
+                                    "ECI": "432462"
+                                  }
+                                }
+                              ],
+                              "RATType": "EUTRAN",
+                              "GTPUTunnelInfo": {
+                                "DownLinkTunnelRecord": {
+                                  "TunnelInfo": {
+                                    "IPAddr": {
+                                      "IPv6": "fdc0:0:0:310::50"
+                                    },
+                                    "TEID": "0x1e8481"
+                                  }
+                                },
+                                "UpLinkTunnelRecord": {
+                                  "TunnelInfo": {
+                                    "IPAddr": {
+                                      "IPv6": "fdc0:0:0:410::30"
+                                    },
+                                    "TEID": "0x3d0901"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "EBI": 6,
+                        "LBI": 5,
+                        "AccessInfo": {
+                          "APN": "ssenoauth146",
+                          "UEAddress": {
+                            "AddrType": "IPv6",
+                            "Addr": {
+                              "IPv6": "2001::1:1"
+                            }
+                          }
+                        },
+                        "GTPUTunnelList": [
+                          {
+                            "GTPUTunnelInfo": {
+                              "DownLinkTunnelRecord": {
+                                "TunnelInfo": {
+                                  "IPAddr": {
+                                    "IPv6": "fdc0:0:0:310::50"
+                                  },
+                                  "TEID": "0x1e8481"
+                                }
+                              },
+                              "UpLinkTunnelRecord": {
+                                "TunnelInfo": {
+                                  "IPAddr": {
+                                    "IPv6": "fdc0:0:0:410::30"
+                                  },
+                                  "TEID": "0x3d0901"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "EventsSummaryReportRecord": {
+          "NumActivity": 1,
+          "SuccessfulEvents": 1
+        }
+      }
+    ]
+  }
+}
+2020-11-26T03:21:28.210Z	INFO	GtpCjson	GTPJSON_PKTS_IN_Count : 11
+2020-11-26T03:21:28.211Z	DEBUG	GTPJSON	RCVD JSON => %s{
+  "version": "1.0.0",
+  "SubscriberActivitySummary": {
+    "NumSubscribers": 1,
+    "SubscribersList": [
+      {
+        "SubscriberId": {
+          "IMSI": "505024101215074",
+          "IMEI": "5050241012150700",
+          "MSISDN": "17962480141"
+        },
+        "InterfaceList": [
+          {
+            "IfName": "S11",
+            "PDNSessionList": [
+              {
+                "UserControlTunnel": {
+                  "GTPCTunnel": {
+                    "AccessGTPCTunnelInfo": {
+                      "IPAddr": {
+                        "IPv6": "fdc0:0:0:310::40"
+                      },
+                      "TEID": "0xf4240"
+                    },
+                    "CoreGTPCTunnelInfo": {
+                      "IPAddr": {
+                        "IPv6": "fdc0:0:0:410::20"
+                      },
+                      "TEID": "0x2dc6c0"
+                    }
+                  }
+                },
+                "UserDataTunnel": {
+                  "BearerInfo": {
+                    "NumBearers": 1,
+                    "BearerList": [
+                      {
+                        "EventActivityList": [
+                          {
+                            "Name": "DEL_SES",
+                            "StartTime": 1606360930,
+                            "EndTime": 1606360930,
+                            "CauseCode": 16,
+                            "Params": {
+                              "AccessInfo": {
+                                "APN": "ssenoauth146",
+                                "UEAddress": {
+                                  "AddrType": "IPv6",
+                                  "Addr": {
+                                    "IPv6": "2001::1:1"
+                                  }
+                                }
+                              },
+                              "QosInfoList": [
+                                {
+                                  "QCI": 4
+                                }
+                              ],
+                              "LocationInfoList": [
+                                {
+                                  "TAI": {
+                                    "PLMNID": {
+                                      "MCC": "310",
+                                      "MNC": "123"
+                                    },
+                                    "TAC": "0xe671"
+                                  },
+                                  "ECGI": {
+                                    "PLMNID": {
+                                      "MCC": "310",
+                                      "MNC": "123"
+                                    },
+                                    "ECI": "432462"
+                                  }
+                                }
+                              ],
+                              "RATType": "EUTRAN",
+                              "GTPUTunnelInfo": {
+                                "DownLinkTunnelRecord": {
+                                  "TunnelInfo": {
+                                    "IPAddr": {
+                                      "IPv6": "fdc0:0:0:310::50"
+                                    },
+                                    "TEID": "0x1e8480"
+                                  }
+                                },
+                                "UpLinkTunnelRecord": {
+                                  "TunnelInfo": {
+                                    "IPAddr": {
+                                      "IPv6": "fdc0:0:0:410::30"
+                                    },
+                                    "TEID": "0x3d0900"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        ],
+                        "EBI": 5,
+                        "AccessInfo": {
+                          "APN": "ssenoauth146",
+                          "UEAddress": {
+                            "AddrType": "IPv6",
+                            "Addr": {
+                              "IPv6": "2001::1:1"
+                            }
+                          }
+                        },
+                        "GTPUTunnelList": [
+                          {
+                            "GTPUTunnelInfo": {
+                              "DownLinkTunnelRecord": {
+                                "TunnelInfo": {
+                                  "IPAddr": {
+                                    "IPv6": "fdc0:0:0:310::50"
+                                  },
+                                  "TEID": "0x1e8480"
+                                }
+                              },
+                              "UpLinkTunnelRecord": {
+                                "TunnelInfo": {
+                                  "IPAddr": {
+                                    "IPv6": "fdc0:0:0:410::30"
+                                  },
+                                  "TEID": "0x3d0900"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "EventsSummaryReportRecord": {
+          "NumActivity": 1,
+          "SuccessfulEvents": 1
+        }
+      }
+    ]
+  }
+}
+2020-11-26T03:21:28.211Z	INFO	GTPJSON	GtpcJSON_STATS_EVT_DEL_SES :3
+2020-11-26T03:21:28.212Z	INFO	correlation	FOUND Event Map SubId:505024101215074
+2020-11-26T03:21:28.212Z	INFO	correlation	UPD IMEI:5050241012150700
+2020-11-26T03:21:28.212Z	INFO	correlation	FOUND INTF IfName:S11, Idx:1
+2020-11-26T03:21:28.212Z	INFO	correlation	FOUND INTF IfName:S11, Idx:1
+2020-11-26T03:21:28.212Z	INFO	GTPJSON	GtpcJSON_STATS_EVT_DEL_SES :4
+2020-11-26T03:21:28.212Z	INFO	correlation	FOUND PDN Idx:0
+2020-11-26T03:21:28.212Z	INFO	correlation	FOUND INTF IfName:S11, Idx:1
+2020-11-26T03:21:28.212Z	INFO	correlation	FOUND PDN Idx:0
+2020-11-26T03:21:28.212Z	INFO	correlation	FOUND BER EBI:6 Idx:1
+2020-11-26T03:21:28.212Z	INFO	correlation	Already Interface, PDN and Bearer present. Update Event list for that bearer
+2020-11-26T03:21:28.212Z	INFO	correlation	FOUND Event Map SubId:505024101215074
+2020-11-26T03:21:28.212Z	INFO	correlation	FOUND INTF IfName:S11, Idx:1
+2020-11-26T03:21:28.213Z	INFO	correlation	FOUND PDN Idx:0
+2020-11-26T03:21:28.213Z	INFO	correlation	FOUND BER EBI:6 Idx:1
+2020-11-26T03:21:28.213Z	INFO	correlation	FOUND Access Flag SubId(IMSI):505024101215074 INTF:1 Pdn:0 Ber:1 Tun:-1 Flag:1
+2020-11-26T03:21:28.213Z	INFO	correlation	ADD EVENT SubId(IMSI):505024101215074 INTF:S11 EBI:6 EvName:DEL_SES
+2020-11-26T03:21:28.213Z	INFO	correlation	Num Events:10
+2020-11-26T03:21:28.213Z	INFO	correlation	EVT Name:DEL_SES Index:2
+2020-11-26T03:21:28.213Z	INFO	correlation	ADD EVT: SubId(IMSI):505024101215074 INTF:S11 PDNSession Access IP: TEID:0xf4240 Core IP: TEID:0x2dc6c0 EBI:6 EvName:DEL_SES EvStart:2020-11-26 03:22:10 +0000 UTC EvEnd:2020-11-26 03:22:10 +0000 UTC
+2020-11-26T03:21:28.213Z	INFO	correlation	FOUND INTF IfName:S11, Idx:1
+2020-11-26T03:21:28.213Z	INFO	correlation	FOUND PDN Idx:0
+2020-11-26T03:21:28.213Z	INFO	correlation	FOUND BER EBI:6 Idx:1
+2020-11-26T03:21:28.213Z	INFO	correlation	SET Access Flag SubId(IMSI):505024101215074 INTF:1 Pdn:0 Ber:1 Tun:0 Flag:1024
+2020-11-26T03:21:28.213Z	INFO	correlation	DEL BER SubId(IMSI):505024101215074 INTF:S11 EBI:6 LBI:5
+2020-11-26T03:21:28.213Z	INFO	correlation	Bearer Deleted mark set
+2020-11-26T03:21:28.213Z	INFO	correlation	UPD IMEI:5050241012150700
+2020-11-26T03:21:28.213Z	INFO	GTPJSON	GtpcJSON_STATS_SUCC_DEL_SES_EVT :3
+2020-11-26T03:21:28.213Z	INFO	correlation	FOUND INTF IfName:S11, Idx:1
+2020-11-26T03:21:28.213Z	INFO	correlation	FOUND INTF IfName:S11, Idx:1
+2020-11-26T03:21:28.213Z	INFO	correlation	FOUND PDN Idx:0
+2020-11-26T03:21:28.213Z	INFO	GtpCjson	GTPJSON_PARSE_ERROR_COUNT : <nil>
+2020-11-26T03:21:28.213Z	INFO	correlation	FOUND INTF IfName:S11, Idx:1
+2020-11-26T03:21:28.213Z	INFO	correlation	FOUND PDN Idx:0
+2020-11-26T03:21:28.213Z	INFO	correlation	FOUND BER EBI:5 Idx:0
+2020-11-26T03:21:28.213Z	INFO	correlation	Already Interface, PDN and Bearer present. Update Event list for that bearer
+2020-11-26T03:21:28.213Z	INFO	correlation	FOUND INTF IfName:S11, Idx:1
+2020-11-26T03:21:28.213Z	INFO	correlation	FOUND PDN Idx:0
+2020-11-26T03:21:28.213Z	INFO	correlation	FOUND BER EBI:5 Idx:0
+2020-11-26T03:21:28.213Z	INFO	correlation	FOUND Access Flag SubId(IMSI):505024101215074 INTF:1 Pdn:0 Ber:0 Tun:-1 Flag:1
+2020-11-26T03:21:28.214Z	INFO	correlation	ADD EVENT SubId(IMSI):505024101215074 INTF:S11 EBI:5 EvName:DEL_SES
+2020-11-26T03:21:28.214Z	INFO	correlation	Num Events:11
+2020-11-26T03:21:28.214Z	INFO	correlation	EVT Name:DEL_SES Index:4
+2020-11-26T03:21:28.214Z	INFO	correlation	ADD EVT: SubId(IMSI):505024101215074 INTF:S11 PDNSession Access IP: TEID:0xf4240 Core IP: TEID:0x2dc6c0 EBI:5 EvName:DEL_SES EvStart:2020-11-26 03:22:10 +0000 UTC EvEnd:2020-11-26 03:22:10 +0000 UTC
+2020-11-26T03:21:28.214Z	INFO	correlation	FOUND INTF IfName:S11, Idx:1
+2020-11-26T03:21:28.214Z	INFO	correlation	FOUND PDN Idx:0
+2020-11-26T03:21:28.214Z	INFO	correlation	FOUND BER EBI:5 Idx:0
+2020-11-26T03:21:28.214Z	INFO	correlation	SET Access Flag SubId(IMSI):505024101215074 INTF:1 Pdn:0 Ber:0 Tun:0 Flag:1024
+2020-11-26T03:21:28.214Z	INFO	correlation	DEL BER SubId(IMSI):505024101215074 INTF:S11 EBI:5 LBI:0
+2020-11-26T03:21:28.214Z	INFO	correlation	Bearer Deleted mark set
+2020-11-26T03:21:28.214Z	INFO	GTPJSON	GtpcJSON_STATS_SUCC_DEL_SES_EVT :4
+2020-11-26T03:21:28.214Z	INFO	GtpCjson	GTPJSON_PARSE_ERROR_COUNT : <nil>
+2020-11-26T03:22:00.000Z	INFO	jobmgr.cron	wake	{"now": "2020-11-26T03:22:00.000Z"}
+2020-11-26T03:22:00.000Z	INFO	jobmgr.cron	run	{"now": "2020-11-26T03:22:00.000Z", "entry": 3, "next": "2020-11-26T03:24:00.000Z", "name": "telemetry"}
+2020-11-26T03:22:00.001Z	INFO	telemetry	update resource:protocols
+2020-11-26T03:22:00.001Z	INFO	telemetry	update resource:memory
+2020-11-26T03:22:00.002Z	INFO	telemetry	update resource:filesystem
+2020-11-26T03:22:00.002Z	INFO	telemetry	update resource:cpu
+2020-11-26T03:22:00.027Z	INFO	telemetry	update resource:sensor
+2020-11-26T03:24:00.000Z	INFO	jobmgr.cron	wake	{"now": "2020-11-26T03:24:00.000Z"}
+2020-11-26T03:24:00.001Z	INFO	jobmgr.cron	run	{"now": "2020-11-26T03:24:00.000Z", "entry": 3, "next": "2020-11-26T03:26:00.000Z", "name": "telemetry"}
+2020-11-26T03:24:00.001Z	INFO	telemetry	update resource:protocols
+2020-11-26T03:24:00.001Z	INFO	jobmgr.cron	run	{"now": "2020-11-26T03:24:00.000Z", "entry": 4, "next": "2020-11-26T03:27:00.000Z", "name": "smafreporter"}
+2020-11-26T03:24:00.001Z	INFO	correlation	Report Generation Started
+2020-11-26T03:24:00.002Z	INFO	telemetry	update resource:memory
+2020-11-26T03:24:00.002Z	INFO	telemetry	update resource:filesystem
+2020-11-26T03:24:00.002Z	INFO	telemetry	update resource:cpu
+2020-11-26T03:24:00.003Z	INFO	correlation	ADD Activity SubId:505024101215074
+2020-11-26T03:24:00.003Z	INFO	correlation	Ager Enabled
+2020-11-26T03:24:00.003Z	INFO	correlation	Ager SessionTimeout 3600 secs
+2020-11-26T03:24:00.003Z	INFO	correlation	Ager GTPU Inactive TO 600 secs
+2020-11-26T03:24:00.003Z	INFO	correlation	Ager GTPU Expiry TO 60 secs
+2020-11-26T03:24:00.003Z	INFO	correlation	In TunLoop if:0 pdn:0 ber:0 tun:0 ret:true
+2020-11-26T03:24:00.003Z	DEBUG	correlation	Time Now:2020-11-26 03:24:00.003666529 +0000 UTC m=+174.142115675 GTPUInActiveTime:2020-11-26 03:31:28.202724831 +0000 UTC m=+622.341173966 GTPUExpiryTime:2020-11-26 03:22:28.202724831 +0000 UTC m=+82.341173966
+2020-11-26T03:24:00.003Z	INFO	correlation	GTPU Tunnel Aged Out IMSI:505024101215074 IFIdx:0 PDNIdx:0 BERIdx:0 TUNIdx:0
+2020-11-26T03:24:00.003Z	DEBUG	correlation	Time Now:2020-11-26 03:24:00.003631526 +0000 UTC m=+174.142080736 SesssionInActiveTime:2020-11-26 04:21:28.202773915 +0000 UTC m=+3622.341223049
+2020-11-26T03:24:00.004Z	INFO	correlation	Ager GTPU Inactive TO 600 secs
+2020-11-26T03:24:00.004Z	INFO	correlation	Ager GTPU Expiry TO 60 secs
+2020-11-26T03:24:00.004Z	INFO	correlation	In TunLoop if:0 pdn:0 ber:1 tun:0 ret:true
+2020-11-26T03:24:00.004Z	DEBUG	correlation	Time Now:2020-11-26 03:24:00.003999379 +0000 UTC m=+174.142448621 GTPUInActiveTime:2020-11-26 03:31:28.202185478 +0000 UTC m=+622.340634680 GTPUExpiryTime:2020-11-26 03:22:28.202185478 +0000 UTC m=+82.340634680
+2020-11-26T03:24:00.004Z	INFO	correlation	GTPU Tunnel Aged Out IMSI:505024101215074 IFIdx:0 PDNIdx:0 BERIdx:1 TUNIdx:0
+2020-11-26T03:24:00.004Z	DEBUG	correlation	Time Now:2020-11-26 03:24:00.003631526 +0000 UTC m=+174.142080736 SesssionInActiveTime:2020-11-26 04:21:28.202222855 +0000 UTC m=+3622.340671993
+2020-11-26T03:24:00.004Z	INFO	correlation	Ager GTPU Inactive TO 600 secs
+2020-11-26T03:24:00.004Z	INFO	correlation	Ager GTPU Expiry TO 60 secs
+2020-11-26T03:24:00.004Z	INFO	correlation	In TunLoop if:1 pdn:0 ber:0 tun:0 ret:true
+2020-11-26T03:24:00.004Z	DEBUG	correlation	Time Now:2020-11-26 03:24:00.004268117 +0000 UTC m=+174.142717326 GTPUInActiveTime:2020-11-26 03:31:28.214261811 +0000 UTC m=+622.352710949 GTPUExpiryTime:2020-11-26 03:22:28.214261811 +0000 UTC m=+82.352710949
+2020-11-26T03:24:00.004Z	INFO	correlation	GTPU Tunnel Aged Out IMSI:505024101215074 IFIdx:1 PDNIdx:0 BERIdx:0 TUNIdx:0
+2020-11-26T03:24:00.004Z	DEBUG	correlation	Time Now:2020-11-26 03:24:00.003631526 +0000 UTC m=+174.142080736 SesssionInActiveTime:2020-11-26 04:21:28.2142993 +0000 UTC m=+3622.352748433
+2020-11-26T03:24:00.004Z	INFO	correlation	Ager GTPU Inactive TO 600 secs
+2020-11-26T03:24:00.004Z	INFO	correlation	Ager GTPU Expiry TO 60 secs
+2020-11-26T03:24:00.004Z	INFO	correlation	In TunLoop if:1 pdn:0 ber:1 tun:0 ret:true
+2020-11-26T03:24:00.004Z	DEBUG	correlation	Time Now:2020-11-26 03:24:00.004526722 +0000 UTC m=+174.142975870 GTPUInActiveTime:2020-11-26 03:31:28.213450436 +0000 UTC m=+622.351899573 GTPUExpiryTime:2020-11-26 03:22:28.213450436 +0000 UTC m=+82.351899573
+2020-11-26T03:24:00.004Z	INFO	correlation	GTPU Tunnel Aged Out IMSI:505024101215074 IFIdx:1 PDNIdx:0 BERIdx:1 TUNIdx:0
+2020-11-26T03:24:00.004Z	DEBUG	correlation	Time Now:2020-11-26 03:24:00.003631526 +0000 UTC m=+174.142080736 SesssionInActiveTime:2020-11-26 04:21:28.21348885 +0000 UTC m=+3622.351937989
+2020-11-26T03:24:00.004Z	INFO	correlation	NUM Sub Activites:1
+2020-11-26T03:24:00.006Z	DEBUG	InvernessA.J	File Generated at /home/monisha/SMAF/SMAF_REL/report/2020-11-26T03:24:00-00:00_SMAF_0.json
+2020-11-26T03:24:00.006Z	INFO	InvernessA	File Generated at: /home/monisha/SMAF/SMAF_REL/report/2020-11-26T03:24:00-00:00_SMAF_0.json
+2020-11-26T03:24:00.027Z	INFO	telemetry	update resource:sensor
+2020-11-26T03:24:00.183Z	INFO	InvernessA.R	24790 bytes copied
+
+2020-11-26T03:24:00.186Z	INFO	InvernessA	File 2020-11-26T03:24:00-00:00_SMAF_0.json copied successfully
+2020-11-26T03:24:00.186Z	DEBUG	InvernessA	File /home/monisha/SMAF/SMAF_REL/report/2020-11-26T03:24:00-00:00_SMAF_0.json deleted
+2020-11-26T03:25:22.367Z	INFO	signal received	{"signal": "interrupt"}
+2020-11-26T03:25:22.367Z	INFO	jobmgr	stop
+2020-11-26T03:25:22.367Z	ERROR	telemetry	Status	{"error": "context canceled"}
+2020-11-26T03:25:22.367Z	INFO	jobmgr.cron	stop
+2020-11-26T03:25:22.367Z	INFO	GtpCjson	stop
+2020-11-26T03:25:22.368Z	INFO	syslog	stop
+2020-11-26T03:25:22.368Z	INFO	sensor shutdown
